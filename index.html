@@ -70,6 +70,21 @@
     font-weight: 600 !important; transition: background .2s, transform .15s !important;
   }
   .nav-cta:hover { background: var(--blue-deep) !important; transform: translateY(-1px); }
+  .menu-toggle {
+    display: none;
+    width: 40px; height: 40px;
+    border-radius: 10px; border: 1px solid var(--border);
+    background: var(--white); cursor: pointer;
+    align-items: center; justify-content: center;
+  }
+  .menu-toggle span {
+    width: 18px; height: 2px; background: var(--dark); display: block; position: relative;
+  }
+  .menu-toggle span::before, .menu-toggle span::after {
+    content: ''; position: absolute; left: 0; width: 18px; height: 2px; background: var(--dark);
+  }
+  .menu-toggle span::before { top: -6px; }
+  .menu-toggle span::after { top: 6px; }
 
   /* ── CONTAINERS ── */
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -697,7 +712,17 @@
   }
   @media (max-width: 600px) {
     section { padding: 56px 0; }
-    .nav-links { display: none; }
+    .menu-toggle { display: inline-flex; }
+    .nav { position: relative; }
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--white);
+      flex-direction: column; gap: 14px;
+      padding: 16px 20px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    nav.open .nav-links { display: flex; }
     .nav-inner { padding: 12px 16px; }
     .nav-logo img { width: 180px !important; height: 64px !important; object-fit: cover !important; background: transparent !important; }
     .hero-stats { gap: 20px; }
@@ -722,11 +747,12 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<nav class="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <img src="icon.jpg" alt="Campux icon" style="width:190px;height:64px;border-radius:12px;object-fit:cover;background:transparent;"/>
     </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span></button>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#campus-life">Campus Life</a></li>
@@ -1669,6 +1695,14 @@ function handleContactSubmit() {
 renderAnnouncements();
 window.addEventListener('storage', renderAnnouncements);
 setInterval(renderAnnouncements, 1500);
+
+// Mobile menu
+const menuBtn = document.getElementById('menuToggle');
+if (menuBtn) {
+  menuBtn.addEventListener('click', () => {
+    document.querySelector('nav').classList.toggle('open');
+  });
+}
 
 // Escape key closes modal
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
