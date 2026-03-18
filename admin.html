@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campux Admin</title>
+  <link rel="icon" href="icon.jpg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green: #25D366;
+      --green-dark: #128C7E;
+      --bg: #0B2016;
+      --card: #0F2A1C;
+      --text: #E6F7EE;
+      --muted: rgba(255,255,255,0.6);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: radial-gradient(circle at top, #103622 0%, #0B2016 50%, #09150F 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 28px;
+    }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      font-family: var(--font-display); font-weight: 800; font-size: 22px;
+    }
+    .brand img { width: 140px; height: 52px; border-radius: 12px; object-fit: cover; }
+    .pill {
+      background: rgba(37,211,102,0.18);
+      border: 1px solid rgba(37,211,102,0.3);
+      padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 700;
+      color: var(--green);
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { font-family: var(--font-display); font-size: 16px; margin-bottom: 12px; }
+    .stat { font-size: 28px; font-weight: 800; color: var(--green); }
+    .sub { font-size: 12px; color: var(--muted); }
+    .section {
+      margin-top: 26px;
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 18px; box-shadow: var(--shadow);
+    }
+    .panel h4 { font-family: var(--font-display); font-size: 15px; margin-bottom: 12px; }
+    .list { display: flex; flex-direction: column; gap: 12px; max-height: 380px; overflow: auto; padding-right: 4px; }
+    .item {
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px; background: rgba(0,0,0,0.2);
+    }
+    .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .value { font-size: 14px; font-weight: 600; }
+    .btn {
+      background: var(--green); color: #06120C; border: none; border-radius: 10px;
+      padding: 8px 12px; font-weight: 700; cursor: pointer; font-size: 12px;
+    }
+    .btn-ghost {
+      background: transparent; color: var(--text); border: 1px solid var(--border);
+    }
+    .input, .textarea {
+      width: 100%; border-radius: 10px; border: 1px solid var(--border);
+      background: rgba(0,0,0,0.25); color: var(--text);
+      padding: 10px 12px; font-family: var(--font-body); font-size: 13px;
+    }
+    .textarea { min-height: 90px; resize: vertical; }
+    .badge {
+      font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 999px;
+      background: rgba(37,211,102,0.18); color: var(--green);
+      border: 1px solid rgba(37,211,102,0.25);
+    }
+    .login {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .login-card {
+      width: 360px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px; box-shadow: var(--shadow);
+    }
+    .login-card h2 { font-family: var(--font-display); margin-bottom: 6px; }
+    .login-card p { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: 1fr; }
+      .section { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <img src="icon.jpg" alt="Campux icon"/>
+      Campux Admin
+    </div>
+    <div class="pill">Live Local Dashboard</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="label">Waitlist</div>
+      <div class="stat" id="statWaitlist">0</div>
+      <div class="sub">Total signups</div>
+    </div>
+    <div class="card">
+      <div class="label">Contacts</div>
+      <div class="stat" id="statContacts">0</div>
+      <div class="sub">Messages received</div>
+    </div>
+    <div class="card">
+      <div class="label">Announcements</div>
+      <div class="stat" id="statAnnouncements">0</div>
+      <div class="sub">Active updates</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="panel">
+      <h4>Waitlist Submissions</h4>
+      <div class="list" id="waitlistList"></div>
+    </div>
+    <div class="panel">
+      <h4>Announcements</h4>
+      <div style="display:grid;gap:10px;margin-bottom:12px">
+        <input class="input" id="annTitle" placeholder="Announcement title"/>
+        <textarea class="textarea" id="annBody" placeholder="Write an update for users..."></textarea>
+        <div class="row">
+          <button class="btn" onclick="addAnnouncement()">Publish</button>
+          <button class="btn btn-ghost" onclick="clearAnnouncement()">Clear</button>
+        </div>
+      </div>
+      <div class="list" id="annList"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="panel">
+      <h4>Contact Sessions</h4>
+      <div class="list" id="contactList"></div>
+    </div>
+    <div class="panel">
+      <h4>Admin Notes</h4>
+      <div class="sub">Responses are stored locally and show up on refresh.</div>
+      <div style="margin-top:12px;display:grid;gap:10px">
+        <textarea class="textarea" id="adminNote" placeholder="Write internal notes here..."></textarea>
+        <button class="btn btn-ghost" onclick="saveNote()">Save Note</button>
+        <div class="sub" id="noteStatus"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="login" id="loginOverlay">
+    <div class="login-card">
+      <h2>Admin Access</h2>
+      <p>Enter the 6-digit admin passcode to continue.</p>
+      <input class="input" id="adminPass" inputmode="numeric" maxlength="6" placeholder="197012"/>
+      <div style="height:10px"></div>
+      <button class="btn" style="width:100%" onclick="handleLogin()">Unlock Dashboard</button>
+      <div class="sub" id="loginError" style="margin-top:10px;color:#FCA5A5;display:none">Incorrect passcode.</div>
+    </div>
+  </div>
+
+  <script>
+    const WAITLIST_KEY = 'campux_waitlist';
+    const CONTACT_KEY = 'campux_contacts';
+    const ANNOUNCEMENTS_KEY = 'campux_announcements';
+    const NOTE_KEY = 'campux_admin_note';
+    const ADMIN_KEY = 'campux_admin_auth';
+    const ADMIN_PASS = '197012';
+
+    function readList(key) {
+      try { return JSON.parse(localStorage.getItem(key) || '[]'); }
+      catch { return []; }
+    }
+    function writeList(key, list) {
+      localStorage.setItem(key, JSON.stringify(list));
+    }
+
+    function renderWaitlist() {
+      const list = readList(WAITLIST_KEY);
+      document.getElementById('statWaitlist').textContent = list.length;
+      const wrap = document.getElementById('waitlistList');
+      wrap.innerHTML = list.map((x, i) => `
+        <div class="item">
+          <div class="row">
+            <div>
+              <div class="value">${x.email}</div>
+              <div class="label">${new Date(x.time).toLocaleString()} · ${x.source || 'waitlist'}</div>
+            </div>
+            <span class="badge">${x.status || 'new'}</span>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <button class="btn btn-ghost" onclick="markWaitlist(${i}, 'contacted')">Mark Contacted</button>
+            <button class="btn btn-ghost" onclick="deleteWaitlist(${i})">Delete</button>
+          </div>
+        </div>
+      `).join('') || '<div class="sub">No waitlist entries yet.</div>';
+    }
+
+    function renderContacts() {
+      const list = readList(CONTACT_KEY);
+      document.getElementById('statContacts').textContent = list.length;
+      const wrap = document.getElementById('contactList');
+      wrap.innerHTML = list.map((x, i) => `
+        <div class="item">
+          <div class="row">
+            <div>
+              <div class="value">${x.name} · ${x.email}</div>
+              <div class="label">${new Date(x.time).toLocaleString()}</div>
+            </div>
+            <span class="badge">${x.status || 'new'}</span>
+          </div>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">${x.message}</div>
+          <div style="margin-top:8px;display:grid;gap:6px">
+            <textarea class="textarea" placeholder="Admin reply..." oninput="saveReply(${i}, this.value)">${x.adminReply || ''}</textarea>
+            <div class="row">
+              <button class="btn btn-ghost" onclick="markContact(${i}, 'replied')">Mark Replied</button>
+              <button class="btn btn-ghost" onclick="deleteContact(${i})">Delete</button>
+            </div>
+          </div>
+        </div>
+      `).join('') || '<div class="sub">No contact messages yet.</div>';
+    }
+
+    function renderAnnouncements() {
+      const list = readList(ANNOUNCEMENTS_KEY);
+      document.getElementById('statAnnouncements').textContent = list.length;
+      const wrap = document.getElementById('annList');
+      wrap.innerHTML = list.map((x, i) => `
+        <div class="item">
+          <div class="row">
+            <div>
+              <div class="value">${x.title}</div>
+              <div class="label">${new Date(x.time).toLocaleString()}</div>
+            </div>
+            <span class="badge">live</span>
+          </div>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">${x.body}</div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <button class="btn btn-ghost" onclick="editAnnouncement(${i})">Edit</button>
+            <button class="btn btn-ghost" onclick="deleteAnnouncement(${i})">Delete</button>
+          </div>
+        </div>
+      `).join('') || '<div class="sub">No announcements yet.</div>';
+    }
+
+    function markWaitlist(index, status) {
+      const list = readList(WAITLIST_KEY);
+      if (!list[index]) return;
+      list[index].status = status;
+      writeList(WAITLIST_KEY, list);
+      renderAll();
+    }
+    function deleteWaitlist(index) {
+      const list = readList(WAITLIST_KEY);
+      list.splice(index, 1);
+      writeList(WAITLIST_KEY, list);
+      renderAll();
+    }
+    function markContact(index, status) {
+      const list = readList(CONTACT_KEY);
+      if (!list[index]) return;
+      list[index].status = status;
+      writeList(CONTACT_KEY, list);
+      renderAll();
+    }
+    function deleteContact(index) {
+      const list = readList(CONTACT_KEY);
+      list.splice(index, 1);
+      writeList(CONTACT_KEY, list);
+      renderAll();
+    }
+    function saveReply(index, text) {
+      const list = readList(CONTACT_KEY);
+      if (!list[index]) return;
+      list[index].adminReply = text;
+      writeList(CONTACT_KEY, list);
+    }
+
+    function addAnnouncement() {
+      const title = document.getElementById('annTitle').value.trim();
+      const body = document.getElementById('annBody').value.trim();
+      if (!title || !body) return;
+      const list = readList(ANNOUNCEMENTS_KEY);
+      list.unshift({ title, body, time: new Date().toISOString() });
+      writeList(ANNOUNCEMENTS_KEY, list);
+      document.getElementById('annTitle').value = '';
+      document.getElementById('annBody').value = '';
+      renderAll();
+    }
+    function editAnnouncement(index) {
+      const list = readList(ANNOUNCEMENTS_KEY);
+      const item = list[index];
+      if (!item) return;
+      const title = prompt('Edit title', item.title) || item.title;
+      const body = prompt('Edit body', item.body) || item.body;
+      item.title = title; item.body = body;
+      writeList(ANNOUNCEMENTS_KEY, list);
+      renderAll();
+    }
+    function deleteAnnouncement(index) {
+      const list = readList(ANNOUNCEMENTS_KEY);
+      list.splice(index, 1);
+      writeList(ANNOUNCEMENTS_KEY, list);
+      renderAll();
+    }
+    function clearAnnouncement() {
+      document.getElementById('annTitle').value = '';
+      document.getElementById('annBody').value = '';
+    }
+
+    function saveNote() {
+      const note = document.getElementById('adminNote').value;
+      localStorage.setItem(NOTE_KEY, note);
+      const el = document.getElementById('noteStatus');
+      el.textContent = 'Saved just now.';
+      setTimeout(() => el.textContent = '', 1500);
+    }
+    function loadNote() {
+      document.getElementById('adminNote').value = localStorage.getItem(NOTE_KEY) || '';
+    }
+
+    function renderAll() {
+      renderWaitlist();
+      renderContacts();
+      renderAnnouncements();
+      loadNote();
+    }
+
+    function handleLogin() {
+      const pass = document.getElementById('adminPass').value.trim();
+      if (pass !== ADMIN_PASS) {
+        document.getElementById('loginError').style.display = 'block';
+        return;
+      }
+      localStorage.setItem(ADMIN_KEY, 'true');
+      document.getElementById('loginOverlay').style.display = 'none';
+    }
+
+    function checkLogin() {
+      if (localStorage.getItem(ADMIN_KEY) === 'true') {
+        document.getElementById('loginOverlay').style.display = 'none';
+      }
+    }
+
+    window.addEventListener('storage', () => renderAll());
+    setInterval(renderAll, 1000);
+    checkLogin();
+    renderAll();
+  </script>
+</body>
+</html>
