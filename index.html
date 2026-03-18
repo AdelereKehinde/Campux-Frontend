@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-<link rel="icon" href="icon.jpg"/>
+<link rel="icon" href="OIP.jpg"/>
 <style>
   :root {
     --blue: #25D366;
@@ -56,7 +56,7 @@
     text-decoration: none;
     display: flex; align-items: center; gap: 8px;
   }
-  .nav-logo img { width: 140px; height: 56px; border-radius: 12px; object-fit: contain; background: #fff; }
+  .nav-logo img { width: 240px; height: 56px; border-radius: 12px; object-fit: cover; background: transparent; }
   .nav-logo .dot { color: var(--blue); }
   .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
   .nav-links a {
@@ -245,7 +245,7 @@
   .pnav-plus svg { width: 18px; height: 18px; color: #fff; }
 
   /* ── FEATURES ── */
-  #features { background: #F3FFF8; }
+  #features { background: #EFFFF6; }
   .section-label {
     font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
     color: var(--blue); margin-bottom: 12px;
@@ -311,6 +311,13 @@
     background: var(--blue-light); border-radius: 999px; padding: 4px 10px;
     border: 1px solid rgba(18,140,126,0.18);
   }
+  .message-band {
+    background: linear-gradient(120deg, rgba(37,211,102,0.12), rgba(18,140,126,0.08));
+    border: 1px solid rgba(37,211,102,0.22);
+    border-radius: 16px; padding: 18px; margin-top: 28px;
+    display: grid; gap: 10px;
+  }
+  .message-band strong { font-family: var(--font-display); color: var(--black); }
   .split-block { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
   .split-panel {
     background: var(--white); border: 1px solid var(--border);
@@ -462,14 +469,14 @@
   .tier-tag { display: inline-flex; margin-top: 10px; font-size: 10px; font-weight: 700; color: var(--black); background: #FFD700; padding: 4px 8px; border-radius: 999px; }
 
   /* ── APP PREVIEW ── */
-  #preview { background: #F4FFF9; }
+  #preview { background: #EFFFF6; }
   .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
   .preview-card {
     background: linear-gradient(180deg, #0B2016 0%, #0F2A1C 100%);
-    border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px; overflow: hidden; border: 1px solid rgba(37,211,102,0.18);
     aspect-ratio: 9/16; max-height: 380px;
     display: flex; flex-direction: column;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(37,211,102,0.08) inset;
     transition: transform .3s;
   }
   .preview-card:hover { transform: translateY(-6px) scale(1.02); }
@@ -478,23 +485,39 @@
     background: linear-gradient(90deg, rgba(37,211,102,0.22), rgba(18,140,126,0.15));
   }
   .preview-title { font-size: 14px; font-weight: 700; color: #fff; font-family: var(--font-display); }
+  .preview-topbar {
+    height: 6px; background: linear-gradient(90deg, var(--blue), var(--blue-mid));
+  }
+  .preview-status {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 9px; color: rgba(255,255,255,0.6);
+    padding: 8px 14px 2px;
+  }
+  .preview-nav {
+    display: flex; justify-content: space-around; align-items: center;
+    padding: 8px 10px 12px;
+    border-top: 1px solid rgba(37,211,102,0.18);
+    background: rgba(0,0,0,0.2);
+  }
+  .preview-nav span { font-size: 8px; color: rgba(255,255,255,0.6); }
+  .preview-dot { width: 6px; height: 6px; border-radius: 50%; background: #25D366; box-shadow: 0 0 8px rgba(37,211,102,0.6); }
   .preview-body { flex: 1; padding: 10px 14px 14px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
   .preview-tab { font-size: 9px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
   /* Feed preview items */
-  .fp-item { background: rgba(255,255,255,0.06); border-radius: 8px; padding: 8px; border: 1px solid rgba(255,255,255,0.07); }
+  .fp-item { background: rgba(37,211,102,0.12); border-radius: 8px; padding: 8px; border: 1px solid rgba(37,211,102,0.22); }
   .fp-item-user { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
   .fp-av { width: 20px; height: 20px; border-radius: 50%; }
   .fp-name { font-size: 10px; font-weight: 600; color: #fff; }
   .fp-text { font-size: 9px; color: rgba(255,255,255,0.6); line-height: 1.5; }
   .fp-bar { height: 32px; border-radius: 6px; margin-top: 6px; }
   /* Market preview */
-  .mp-row { background: rgba(255,255,255,0.06); border-radius: 8px; padding: 8px; border: 1px solid rgba(255,255,255,0.07); display: flex; gap: 8px; align-items: center; }
+  .mp-row { background: rgba(37,211,102,0.12); border-radius: 8px; padding: 8px; border: 1px solid rgba(37,211,102,0.22); display: flex; gap: 8px; align-items: center; }
   .mp-thumb { width: 36px; height: 36px; border-radius: 6px; flex-shrink: 0; }
   .mp-name { font-size: 10px; font-weight: 600; color: #fff; }
   .mp-price { font-size: 11px; font-weight: 700; color: #4CE08A; }
   .mp-info { font-size: 9px; color: rgba(255,255,255,0.4); }
   /* Chat preview */
-  .cp-row { background: rgba(255,255,255,0.06); border-radius: 8px; padding: 8px; border: 1px solid rgba(255,255,255,0.07); display: flex; gap: 8px; align-items: center; }
+  .cp-row { background: rgba(37,211,102,0.12); border-radius: 8px; padding: 8px; border: 1px solid rgba(37,211,102,0.22); display: flex; gap: 8px; align-items: center; }
   .cp-av { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; }
   .cp-name { font-size: 10px; font-weight: 600; color: #fff; }
   .cp-msg { font-size: 9px; color: rgba(255,255,255,0.45); }
@@ -608,14 +631,15 @@
   .social-link:hover svg { color: #fff; }
 
   .admin-link {
-    position: fixed; bottom: 14px; right: 14px;
-    padding: 6px 10px; border-radius: 10px;
+    position: fixed; bottom: 12px; right: 12px;
+    width: 20px; height: 20px; border-radius: 6px;
     background: rgba(37,211,102,0.18);
-    border: 1px solid rgba(37,211,102,0.35);
-    color: var(--blue-deep); font-size: 11px; font-weight: 700;
-    z-index: 120; display: inline-flex; align-items: center; gap: 6px;
-    text-decoration: none;
+    border: 1px solid rgba(37,211,102,0.28);
+    color: transparent; font-size: 10px; font-weight: 700;
+    z-index: 120; display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; letter-spacing: .08em;
   }
+  .admin-link::after { content: '·'; color: rgba(18,140,126,0.7); font-size: 18px; line-height: 1; }
   .admin-link:hover { background: rgba(37,211,102,0.3); }
 
   /* ── MODAL ── */
@@ -675,7 +699,7 @@
     section { padding: 56px 0; }
     .nav-links { display: none; }
     .nav-inner { padding: 12px 16px; }
-    .nav-logo img { width: 160px !important; height: 56px !important; }
+    .nav-logo img { width: 180px !important; height: 64px !important; object-fit: cover !important; background: transparent !important; }
     .hero-stats { gap: 20px; }
     .hero-title { font-size: clamp(30px, 8vw, 44px); }
     .hero-desc { font-size: 15px; }
@@ -701,7 +725,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img src="icon.jpg" alt="Campux icon" style="width:120px;height:52px;border-radius:12px;object-fit:cover"/>
+      <img src="icon.jpg" alt="Campux icon" style="width:190px;height:64px;border-radius:12px;object-fit:cover;background:transparent;"/>
     </a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
@@ -817,6 +841,9 @@
             </div>
           </div>
         </div>
+        <div class="preview-nav">
+          <span>Feed</span><span>Market</span><span>Chats</span><span>Profile</span>
+        </div>
       </div>
     </div>
   </div>
@@ -912,6 +939,11 @@
         <div class="feat-desc">Posts, marketplace listings, and ads seamlessly integrated into one unified content experience.</div>
       </div>
     </div>
+    <div class="message-band fade-up">
+      <div><strong>Campux keeps students connected</strong> with real-time chats, campus news, and verified communities.</div>
+      <div><strong>Campux powers student business</strong> with trusted listings, payment‑ready tools, and boosted reach.</div>
+      <div><strong>Campux makes campus safer</strong> through verified profiles, SOS tools, and trusted service providers.</div>
+    </div>
   </div>
 </section>
 
@@ -985,6 +1017,9 @@
           </div>
           <div style="font-size:13px;color:var(--gray)">Updated live from partner organizations and campus career offices.</div>
         </div>
+        <div class="preview-nav">
+          <span>Feed</span><span>Market</span><span>Sell</span><span>Profile</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1039,12 +1074,15 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <span style="font-size:14px;color:rgba(255,255,255,0.8)"><strong style="color:#fff">4.9★</strong> trusted platform</span>
         </div>
+        <div class="preview-nav">
+          <span>Chats</span><span>Groups</span><span>Calls</span><span>Profile</span>
+        </div>
       </div>
     </div>
     <div class="market-grid stagger">
       <div class="market-card">
         <div class="market-card-img">
-          <img src="icon.jpg" alt="MacBook Air"/>
+          <img src="mac.jpg" alt="MacBook Air"/>
         </div>
         <div class="market-card-body">
           <div class="market-card-cat">Electronics</div>
@@ -1055,7 +1093,7 @@
       </div>
       <div class="market-card">
         <div class="market-card-img">
-          <img src="kenny.jfif" alt="Design Service"/>
+          <img src="graphic.jpg" alt="Design Service"/>
         </div>
         <div class="market-card-body">
           <div class="market-card-cat">Services</div>
@@ -1065,7 +1103,7 @@
       </div>
       <div class="market-card">
         <div class="market-card-img">
-          <img src="icon.jpg" alt="Off-Campus Room"/>
+          <img src="campus.jpg" alt="Off-Campus Room"/>
         </div>
         <div class="market-card-body">
           <div class="market-card-cat">Rentals</div>
@@ -1076,7 +1114,7 @@
       </div>
       <div class="market-card">
         <div class="market-card-img">
-          <img src="kenny.jfif" alt="Samsung Galaxy"/>
+          <img src="sam.jpg" alt="Samsung Galaxy"/>
         </div>
         <div class="market-card-body">
           <div class="market-card-cat">Gadgets</div>
@@ -1215,9 +1253,10 @@
     <div class="preview-grid stagger">
       <!-- Feed screen -->
       <div class="preview-card">
+        <div class="preview-topbar"></div>\n        <div class="preview-status">\n          <span>9:41</span>\n          <span>Campux</span>\n        </div>
         <div class="preview-header">
           <span class="preview-title">Social Feed</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          <div class="preview-dot"></div>
         </div>
         <div class="preview-body">
           <div class="preview-tab">Campus Feed</div>
@@ -1227,18 +1266,18 @@
               <div class="fp-name">Chioma A. · CS Dept</div>
             </div>
             <div class="fp-text">Sharing my notes for EEE 301 — free for everyone! Links in bio 📚</div>
-            <div class="fp-bar" style="background:linear-gradient(90deg,#1A3A6B,#25D366)"></div>
+            <div class="fp-bar" style="background:linear-gradient(90deg,#0B2016,#25D366)"></div>
           </div>
           <div class="fp-item">
             <div class="fp-item-user">
-              <div class="fp-av" style="background:linear-gradient(135deg,#00C853,#0078FF)"></div>
+              <div class="fp-av" style="background:linear-gradient(135deg,#25D366,#128C7E)"></div>
               <div class="fp-name">Student Union · Official</div>
             </div>
             <div class="fp-text">Registration for the inter-faculty sports competition is now open! Don't miss out.</div>
           </div>
           <div class="fp-item">
             <div class="fp-item-user">
-              <div class="fp-av" style="background:linear-gradient(135deg,#FF8C00,#FF4500)"></div>
+              <div class="fp-av" style="background:linear-gradient(135deg,#0B2016,#25D366)"></div>
               <div class="fp-name">Kolade E. · Law</div>
             </div>
             <div class="fp-text">Looking for team members for the moot court competition. DM me!</div>
@@ -1247,29 +1286,30 @@
       </div>
       <!-- Marketplace screen -->
       <div class="preview-card">
+        <div class="preview-topbar"></div>\n        <div class="preview-status">\n          <span>9:41</span>\n          <span>Campux</span>\n        </div>
         <div class="preview-header">
           <span class="preview-title">Marketplace</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          <div class="preview-dot"></div>
         </div>
         <div class="preview-body">
           <div class="preview-tab">Trending Near You</div>
           <div class="mp-row">
-            <div class="mp-thumb" style="background:linear-gradient(135deg,#143226,#25D366)"></div>
+            <div class="mp-thumb" style="background:linear-gradient(135deg,#0B2016,#25D366)"></div>
             <div><div class="mp-name">iPad Pro 11"</div><div class="mp-info">Electronics · Good</div></div>
             <div class="mp-price" style="margin-left:auto">₦320K</div>
           </div>
           <div class="mp-row">
-            <div class="mp-thumb" style="background:linear-gradient(135deg,#0D3B1F,#1F9E6F)"></div>
+            <div class="mp-thumb" style="background:linear-gradient(135deg,#128C7E,#4CE08A)"></div>
             <div><div class="mp-name">Logo Design</div><div class="mp-info">Service · Digital</div></div>
             <div class="mp-price" style="margin-left:auto">₦8K</div>
           </div>
           <div class="mp-row">
-            <div class="mp-thumb" style="background:linear-gradient(135deg,#2D2416,#FF8C00)"></div>
+            <div class="mp-thumb" style="background:linear-gradient(135deg,#0B2016,#25D366)"></div>
             <div><div class="mp-name">Self-Con Room</div><div class="mp-info">Rental · 5 min away</div></div>
             <div class="mp-price" style="margin-left:auto">₦35K</div>
           </div>
           <div class="mp-row">
-            <div class="mp-thumb" style="background:linear-gradient(135deg,#3a2200,#FF8C00)"></div>
+            <div class="mp-thumb" style="background:linear-gradient(135deg,#128C7E,#25D366)"></div>
             <div><div class="mp-name">Airpods Pro</div><div class="mp-info">Electronics · New</div></div>
             <div class="mp-price" style="margin-left:auto">₦95K</div>
           </div>
@@ -1277,29 +1317,30 @@
       </div>
       <!-- Chat screen -->
       <div class="preview-card">
+        <div class="preview-topbar"></div>\n        <div class="preview-status">\n          <span>9:41</span>\n          <span>Campux</span>\n        </div>
         <div class="preview-header">
           <span class="preview-title">Messages</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <div class="preview-dot"></div>
         </div>
         <div class="preview-body">
           <div class="preview-tab">Recent Conversations</div>
           <div class="cp-row">
-            <div class="cp-av" style="background:linear-gradient(135deg,#00c6a2,#0078ff)"></div>
+            <div class="cp-av" style="background:linear-gradient(135deg,#25D366,#4CE08A)"></div>
             <div style="flex:1"><div class="cp-name">Study Group 300L</div><div class="cp-msg">Emeka: Has anyone done Q4?</div></div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="cp-time">2m</div><div class="cp-badge">5</div></div>
           </div>
           <div class="cp-row">
-            <div class="cp-av" style="background:linear-gradient(135deg,#FF8C00,#FF4500)"></div>
+            <div class="cp-av" style="background:linear-gradient(135deg,#0B2016,#25D366)"></div>
             <div style="flex:1"><div class="cp-name">Marketplace Buyer</div><div class="cp-msg">Is the laptop still available?</div></div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="cp-time">15m</div><div class="cp-badge">1</div></div>
           </div>
           <div class="cp-row">
-            <div class="cp-av" style="background:linear-gradient(135deg,#8B5CF6,#25D366)"></div>
+            <div class="cp-av" style="background:linear-gradient(135deg,#0B2016,#25D366)"></div>
             <div style="flex:1"><div class="cp-name">Aisha B.</div><div class="cp-msg">Thanks for the notes!</div></div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="cp-time">1h</div></div>
           </div>
           <div class="cp-row">
-            <div class="cp-av" style="background:linear-gradient(135deg,#065F46,#00C853)"></div>
+            <div class="cp-av" style="background:linear-gradient(135deg,#128C7E,#4CE08A)"></div>
             <div style="flex:1"><div class="cp-name">Internship Alert</div><div class="cp-msg">New opportunity matches you!</div></div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="cp-time">3h</div><div class="cp-badge">2</div></div>
           </div>
@@ -1361,6 +1402,10 @@
       </div>
       <div class="waitlist-success" id="waitlistSuccess">🎉 You've successfully joined the waitlist! We'll be in touch soon.</div>
       <div class="waitlist-error" id="waitlistError">Please enter a valid email address.</div>
+    </div>
+    <div class="message-band fade-up" id="announcementsBand" style="display:none">
+      <div class="section-label" style="margin-bottom:6px">Live Updates</div>
+      <div id="announcementsList"></div>
     </div>
   </div>
 </section>
@@ -1429,7 +1474,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#" class="nav-logo" style="font-family:var(--font-display);font-size:22px;font-weight:800;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px;margin-bottom:12px">
-          <img src="icon.jpg" alt="Campux icon" style="width:140px;height:56px;border-radius:12px;object-fit:cover"/>
+          <img src="icon.jpg" alt="Campux icon" style="width:210px;height:72px;border-radius:12px;object-fit:cover;background:transparent;"/>
         </a>
         <p>The all-in-one super-app built for the modern African campus. Developed with love by AdelereKehinde.</p>
       </div>
@@ -1507,7 +1552,7 @@
 </div>
 
 <!-- Hidden Admin Link -->
-<a href="admin.html" class="admin-link" aria-label="Admin">Admin</a>
+<a href="admin.html" class="admin-link" aria-label="Admin"></a>
 
 <script>
 const WAITLIST_KEY = 'campux_waitlist';
@@ -1530,6 +1575,21 @@ function addContact(payload) {
   const list = getStoredList(CONTACT_KEY);
   list.unshift({ ...payload, time: new Date().toISOString(), status: 'new', adminReply: '' });
   setStoredList(CONTACT_KEY, list);
+}
+
+function renderAnnouncements() {
+  const list = getStoredList(ANNOUNCEMENTS_KEY);
+  const band = document.getElementById('announcementsBand');
+  const wrap = document.getElementById('announcementsList');
+  if (!band || !wrap) return;
+  if (!list.length) { band.style.display = 'none'; return; }
+  band.style.display = 'grid';
+  wrap.innerHTML = list.slice(0, 3).map(a => `
+    <div style="font-size:14px;color:var(--dark)">
+      <strong style="font-family:var(--font-display)">${a.title}</strong>
+      <div style="font-size:13px;color:var(--gray);margin-top:4px">${a.body}</div>
+    </div>
+  `).join('');
 }
 
 // Intersection Observer for animations
@@ -1606,11 +1666,20 @@ function handleContactSubmit() {
   nameEl.value = ''; emailEl.value = ''; msgEl.value = '';
 }
 
+renderAnnouncements();
+window.addEventListener('storage', renderAnnouncements);
+setInterval(renderAnnouncements, 1500);
+
 // Escape key closes modal
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
+
+
+
+
+
 
 
 
